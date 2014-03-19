@@ -3,6 +3,8 @@ if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
+require_once 'inc/auth.php';
+
 include 'inc/header.php';
 include 'inc/navbar.php';
 ?>
