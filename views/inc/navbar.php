@@ -14,28 +14,35 @@ if (! defined('BASEPATH')) {
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo site_url(); ?>"><span class="glyphicon glyphicon-home"></span></a>
+            <div class="visible-xs navbar-brand" style="padding-left:0"><strong>SIS</strong>e<strong>k</strong>ol<strong>a</strong>h</div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="<?php echo custom_url('sekolah'); ?>">Sekolah</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Buku Induk <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Buku Induk Siswa</a></li>
-                        <li><a href="#">Buku Induk Keadaan Jasmani</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Pendidik &amp; Tenaga Kependidikan</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Absensi <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo custom_url('absensi/peserta_didik'); ?>">Peserta Didik</a></li>
-                        <li><a href="<?php echo custom_url('absensi/ptk'); ?>">PTK</a></li>
-                    </ul>
-                </li>
+                <?php
+
+                function navbar($structure) {
+                    foreach ($structure as $value) {
+                        if (! priv('view', $value->id)) {
+                            continue;
+                        }
+                        if (! empty($value->childs)) {
+                            echo '<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">'.var_lang($value->title).' <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">';
+                            navbar($value->childs);
+                            echo '  </ul>
+                                </li>';
+                        } else {
+                            echo '<li><a href="'.structure_url($value).'">'.var_lang($value->title).'</a></li>';
+                        }
+                    }
+                }
+
+                $structure = get_structure('', false);
+                navbar($structure);
+                ?>
             </ul>
 
             <div class="nav navbar-nav navbar-right">
@@ -47,6 +54,8 @@ if (! defined('BASEPATH')) {
                     </tr>
                 </table>
             </div>
+
+            <div class="hidden-xs navbar-brand pull-right" style="padding-left:0"><strong>SIS</strong>e<strong>k</strong>ol<strong>a</strong>h</div>
         </div>
     </div>
 </nav>

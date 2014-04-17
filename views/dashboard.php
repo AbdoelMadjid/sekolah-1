@@ -5,6 +5,12 @@ if (! defined('BASEPATH')) {
 
 require_once 'inc/auth.php';
 
+// Load DataSekolah
+$CI =& get_instance();
+$sekolah_id    = user_config($current_user->username, 'sekolah_id', 1);
+$sekolah_model = $CI->kwitang->ctModel('DataSekolah', 'DataSekolahM');
+$sekolah       = $sekolah_model->get($sekolah_id);
+
 include 'inc/header.php';
 include 'inc/navbar.php';
 ?>
@@ -37,7 +43,9 @@ include 'inc/navbar.php';
                     <h3 class="panel-title">Identitas Sekolah</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                    <?php
+                    var_dump($sekolah);
+                    ?>
                 </div>
             </div>
         </div>

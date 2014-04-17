@@ -2,11 +2,12 @@
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
+
 $this->load->helper('kwitang_fe');
 
 $css_head[] = asset_url('css/login.css');
 
-include FRONT_PATH.'terbang/views/inc/header.php';
+include FRONT_PATH.'sekolah/views/inc/header.php';
 ?>
 
 <div class="container">
@@ -16,6 +17,7 @@ include FRONT_PATH.'terbang/views/inc/header.php';
 
     echo '<div class="form-signin-logo"><img src="'.$site_logo.'" alt=""></div>';
     echo '<h2 class="form-signin-heading">'.kconfig('system', 'site_name', 'Aplikasi Sekolah').'</h2>';
+    echo '<h4 class="form-signin-heading">'.kconfig('system', 'site_slogan', 'Sistem Informasi Sekolah').'</h4>';
 
     if (isset ($_GET['message'])) {
         echo '<div class="login-error"><div class="label label-danger">'.$_GET['message'].'</div></div>';
@@ -34,4 +36,4 @@ include FRONT_PATH.'terbang/views/inc/header.php';
 </div>
 
 <?php
-include FRONT_PATH.'terbang/views/inc/footer.php';
+include FRONT_PATH.'sekolah/views/inc/footer.php';

@@ -12,7 +12,7 @@ include 'inc/navbar.php';
 <div class="container">
     <div class="row">
         <div class="page-header">
-            <h1>Sekolah</h1>
+            <h1>Absensi Siswa</h1>
         </div>
 
         <div class="form-horizontal">
