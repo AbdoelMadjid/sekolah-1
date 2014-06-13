@@ -16,7 +16,14 @@ include 'inc/navbar.php';
         </div>
 
         <div class="form-horizontal">
-            ??
+            tampilkan per hari ini
+
+            Tanggal
+            Data Grid
+            filter/search
+             - kelas
+             - nama
+            rekap absen per siswa
         </div>
     </div>
 </div>
